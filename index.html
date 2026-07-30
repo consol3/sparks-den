@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark's Den — Fursuit Maker Portfolio</title>
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="night">
+
+<div class="ember-layer" aria-hidden="true">
+  <span class="ember e1"></span><span class="ember e2"></span><span class="ember e3"></span>
+  <span class="ember e4"></span><span class="ember e5"></span><span class="ember e6"></span>
+  <span class="ember e7"></span><span class="ember e8"></span>
+</div>
+
+<header class="top-bar">
+  <a href="#top" class="logo">
+    <img src="images/logo.svg" alt="Spark's Den logo">
+    <span>Spark's Den</span>
+  </a>
+  <nav class="main-nav">
+    <a href="#gallery">The Gear</a>
+    <a href="#about">Bit 'Bout Us</a>
+    <a href="#commissions">Get Sorted</a>
+    <a href="#contact">Give Us a Shout</a>
+  </nav>
+  <button class="flame-toggle" id="themeToggle" aria-label="Toggle day/night">
+    <span class="flame-icon">🔥</span>
+  </button>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="eyebrow">proper mint fursuit maker, no cap</p>
+    <h1>OI OI, WELCOME TO SPARK'S DEN <span class="wag">🐾</span></h1>
+    <p class="tagline">Handmade mascot suits, absolutely sound from head to paw. Fluffy heads, full sends, the lot — sorted right 'ere.</p>
+    <div class="hero-cta">
+      <a href="#gallery" class="btn btn-primary">Check the Gear</a>
+      <a href="#commissions" class="btn btn-outline">Get Yourself Sorted</a>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <section id="gallery" class="section">
+    <h2 class="section-title">the gear on show</h2>
+    <p class="section-sub">Bits I've knocked up — proper class, if I say so meself. Swap these for the real photos whenever, yeah.</p>
+    <div class="gallery-grid">
+      <figure class="ember-card"><img src="images/gallery-1.svg" alt="Placeholder fursuit photo"><figcaption>Full Send</figcaption></figure>
+      <figure class="ember-card"><img src="images/gallery-2.svg" alt="Placeholder fursuit photo"><figcaption>Half n Half</figcaption></figure>
+      <figure class="ember-card"><img src="images/gallery-3.svg" alt="Placeholder fursuit photo"><figcaption>Just the Head, Innit</figcaption></figure>
+      <figure class="ember-card"><img src="images/gallery-4.svg" alt="Placeholder fursuit photo"><figcaption>Full Send</figcaption></figure>
+      <figure class="ember-card"><img src="images/gallery-5.svg" alt="Placeholder fursuit photo"><figcaption>Tail n Ears, Bit of a Laugh</figcaption></figure>
+      <figure class="ember-card"><img src="images/gallery-6.svg" alt="Placeholder fursuit photo"><figcaption>Half n Half</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="about" class="section section-alt">
+    <div class="about-wrap">
+      <img src="images/about-placeholder.svg" alt="Placeholder portrait" class="about-photo">
+      <div class="about-copy">
+        <h2 class="section-title">bit 'bout us</h2>
+        <p>[Chuck your bio in 'ere — who you are, how you got into makin' suits, what makes your gear proper different, innit.]</p>
+        <p>[Say how long you've been at it, any cons you roll up to, or owt funny that's happened along the way.]</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="commissions" class="section">
+    <h2 class="section-title">get yourself sorted</h2>
+    <p class="section-sub">Currently: <span class="status-badge">well open, come through</span> — sort this to whatever's actually true.</p>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <h3>Just a Head, Bruv</h3>
+        <p class="tier-price">from $XXX</p>
+        <ul><li>Fully lined, no shortcuts</li><li>Custom fur, proper pattern</li><li>Follow-me eyes if you're fancy</li></ul>
+      </div>
+      <div class="tier-card tier-featured">
+        <span class="tier-flame">🔥</span>
+        <h3>Half n Half</h3>
+        <p class="tier-price">from $XXX</p>
+        <ul><li>Head, paws, and a tail</li><li>Colours n markings, your call</li><li>Digi or standard legs, sound either way</li></ul>
+      </div>
+      <div class="tier-card">
+        <h3>The Full Send</h3>
+        <p class="tier-price">from $XXX</p>
+        <ul><li>Head to toe, the whole kit</li><li>Bodysuit n feet paws included</li><li>Proper sit-down to plan it all out</li></ul>
+      </div>
+    </div>
+    <p class="tier-note">[Chuck in the real bits — turnaround, deposit, waitlist, all that.]</p>
+  </section>
+
+  <section id="contact" class="section section-alt contact-section">
+    <h2 class="section-title">give us a shout</h2>
+    <p class="section-sub">Got a question, fancy a chat, or just want to say alright? Don't be shy.</p>
+    <a href="mailto:hello@example.com" class="contact-email">hello@example.com</a>
+    <div class="social-links">
+      <a href="#">🐦 Twitter/X</a>
+      <a href="#">📷 Instagram</a>
+      <a href="#">🦊 FurAffinity</a>
+      <a href="#">💬 Telegram</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Spark's Den. Sound as a pound, that.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
