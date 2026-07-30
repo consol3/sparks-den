@@ -89,9 +89,18 @@ a { text-decoration: none; color: inherit; }
 .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-head); font-size: 1.5rem; letter-spacing: 0.05em; color: var(--accent-2); }
 .logo img { width: 34px; height: 34px; }
 
-.main-nav { display: flex; gap: 22px; }
+.main-nav { display: flex; align-items: center; gap: 22px; }
 .main-nav a { font-weight: 700; color: var(--ink-soft); transition: color 0.2s; }
 .main-nav a:hover { color: var(--accent); }
+
+.nav-queue-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--accent);
+  color: var(--accent-2) !important;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.nav-queue-btn:hover { transform: translateY(-2px); background: rgba(255,106,31,0.12); color: var(--accent) !important; }
 
 .flame-toggle {
   background: none;
