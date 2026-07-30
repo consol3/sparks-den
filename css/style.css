@@ -3,32 +3,18 @@
   --font-body: 'Rubik', sans-serif;
 }
 
-body[data-theme="night"] {
-  --bg: #17161a;
-  --bg-alt: #201e23;
+body {
+  --bg: #101012;
+  --bg-alt: #1a181c;
   --ink: #f4ede6;
   --ink-soft: #b8aca3;
-  --card: #26232a;
+  --card: #221f24;
   --accent: #ff6a1f;
   --accent-2: #ffb347;
   --accent-dark: #b8410a;
   --shadow: 0 10px 26px rgba(0,0,0,0.55);
   --ember-op: 1;
   --glow-op: 1;
-}
-
-body[data-theme="day"] {
-  --bg: #3a3640;
-  --bg-alt: #454049;
-  --ink: #fff6ee;
-  --ink-soft: #d9cfc6;
-  --card: #4a444e;
-  --accent: #ff8a3d;
-  --accent-2: #ffcf7a;
-  --accent-dark: #d9601a;
-  --shadow: 0 8px 20px rgba(0,0,0,0.35);
-  --ember-op: 0.5;
-  --glow-op: 0.6;
 }
 
 * { box-sizing: border-box; }
@@ -102,7 +88,35 @@ a { text-decoration: none; color: inherit; }
 }
 .nav-queue-btn:hover { transform: translateY(-2px); background: rgba(255,106,31,0.12); color: var(--accent) !important; }
 
+.flame-toggle-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poke-glow {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 55vh;
+  background: radial-gradient(ellipse at bottom, rgba(255,140,50,0.55), rgba(255,106,31,0.18) 45%, transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.poke-glow.poking {
+  animation: poke-glow-burst 1.4s ease-out forwards;
+}
+@keyframes poke-glow-burst {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 .flame-toggle {
+  position: relative;
   background: none;
   border: 2px solid var(--accent);
   border-radius: 50%;
@@ -113,7 +127,63 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 0 14px rgba(255,106,31,var(--glow-op));
   transition: box-shadow 0.6s ease, transform 0.2s ease;
 }
+
+.flame-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.flame-toggle.poked .flame-icon {
+  animation: flame-poke 0.5s ease-out;
+}
+@keyframes flame-poke {
+  0% { transform: scale(1) rotate(0deg); }
+  30% { transform: scale(1.5) rotate(-8deg); filter: brightness(1.6); }
+  60% { transform: scale(1.2) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
 .flame-toggle:hover { transform: scale(1.1); }
+.flame-toggle:active { transform: scale(0.9); }
+
+.surge-ember {
+  position: fixed;
+  bottom: 0;
+  width: var(--esize, 5px);
+  height: var(--esize, 5px);
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 0 0 12px 3px var(--accent);
+  pointer-events: none;
+  z-index: 6;
+  animation: surge-rise var(--sdur, 1.6s) ease-out forwards, surge-flicker 0.18s ease-in-out infinite;
+}
+@keyframes surge-rise {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translateY(calc(var(--rise, -220px) * 0.55)) translateX(calc(var(--drift) * 0.6)) scale(1.1); }
+  100% { transform: translateY(var(--rise, -220px)) translateX(var(--drift)) scale(0.4); opacity: 0; }
+}
+@keyframes surge-flicker {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.6); }
+}
+
+.spark-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  pointer-events: none;
+  z-index: 999;
+  box-shadow: 0 0 6px 1px currentColor;
+  animation: spark-fly 0.55s ease-out forwards;
+}
+
+@keyframes spark-fly {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--sx)), calc(-50% + var(--sy))) scale(0.3); opacity: 0; }
+}
 
 .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--ink); cursor: pointer; }
 

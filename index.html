@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-theme="night">
+<body>
 
 <div class="ember-layer" aria-hidden="true">
   <span class="ember e1"></span><span class="ember e2"></span><span class="ember e3"></span>
@@ -29,9 +29,12 @@
     <a href="#contact">Give Us a Shout</a>
     <a href="https://trello.com/b/0k7D8smd/commissions" target="_blank" rel="noopener" class="nav-queue-btn">Peek the Queue</a>
   </nav>
-  <button class="flame-toggle" id="themeToggle" aria-label="Toggle day/night">
-    <span class="flame-icon">🔥</span>
-  </button>
+  <div class="flame-toggle-wrap">
+    <div class="poke-glow" id="pokeGlow"></div>
+    <button class="flame-toggle" id="themeToggle" aria-label="Toggle day/night">
+      <span class="flame-icon">🔥</span>
+    </button>
+  </div>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
 </header>
 

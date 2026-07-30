@@ -8,13 +8,68 @@ mainNav.querySelectorAll('a').forEach(link => {
 });
 
 const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
+const pokeGlow = document.getElementById('pokeGlow');
 
-const savedTheme = localStorage.getItem('sparks-den-theme-v8');
-if (savedTheme) body.setAttribute('data-theme', savedTheme);
+const POKE_COOLDOWN_MS = 2200;
+let pokeOnCooldown = false;
 
 themeToggle.addEventListener('click', () => {
-  const next = body.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-  body.setAttribute('data-theme', next);
-  localStorage.setItem('sparks-den-theme-v8', next);
+  if (pokeOnCooldown) return;
+  pokeOnCooldown = true;
+
+  pokeTheFire();
+
+  themeToggle.disabled = true;
+  setTimeout(() => {
+    themeToggle.disabled = false;
+    pokeOnCooldown = false;
+  }, POKE_COOLDOWN_MS);
 });
+
+function pokeTheFire() {
+  pokeGlow.classList.remove('poking');
+  requestAnimationFrame(() => pokeGlow.classList.add('poking'));
+
+  themeToggle.classList.remove('poked');
+  requestAnimationFrame(() => themeToggle.classList.add('poked'));
+
+  spawnEmberSurge();
+}
+
+function spawnEmberSurge() {
+  const count = 22;
+  for (let i = 0; i < count; i++) {
+    const ember = document.createElement('span');
+    ember.className = 'surge-ember';
+    ember.style.left = (Math.random() * 100) + 'vw';
+    ember.style.setProperty('--esize', (3 + Math.random() * 4) + 'px');
+    ember.style.setProperty('--rise', -(160 + Math.random() * 220) + 'px');
+    ember.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
+    ember.style.setProperty('--sdur', (1.1 + Math.random() * 0.9) + 's');
+    ember.style.animationDelay = (Math.random() * 0.6) + 's';
+    document.body.appendChild(ember);
+    setTimeout(() => ember.remove(), 2200);
+  }
+}
+
+document.addEventListener('click', (e) => spawnSparks(e.clientX, e.clientY));
+
+function spawnSparks(cx, cy) {
+  const sparkColors = ['#ff6a1f', '#ffb347', '#fff2c2'];
+
+  for (let i = 0; i < 10; i++) {
+    const spark = document.createElement('span');
+    spark.className = 'spark-particle';
+    spark.style.background = sparkColors[i % sparkColors.length];
+    spark.style.left = cx + 'px';
+    spark.style.top = cy + 'px';
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 30 + Math.random() * 50;
+    spark.style.setProperty('--sx', Math.cos(angle) * distance + 'px');
+    spark.style.setProperty('--sy', Math.sin(angle) * distance + 'px');
+
+    document.body.appendChild(spark);
+    spark.addEventListener('animationend', () => spark.remove());
+  }
+}
