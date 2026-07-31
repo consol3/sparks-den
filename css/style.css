@@ -242,21 +242,28 @@ a { text-decoration: none; color: inherit; }
 }
 .section-sub { text-align: center; color: var(--ink-soft); max-width: 560px; margin: 0 auto 36px; }
 
-/* ---- Gallery ---- */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; }
+/* ---- Gallery (masonry, keeps each photo's natural aspect ratio) ---- */
+.gallery-grid {
+  column-count: 3;
+  column-gap: 24px;
+}
 
 .ember-card {
-  margin: 0;
+  margin: 0 0 24px;
   background: var(--card);
   border: 1px solid var(--accent-dark);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  break-inside: avoid;
 }
 .ember-card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(255,106,31,0.3); }
-.ember-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.ember-card img { width: 100%; height: auto; display: block; }
 .ember-card figcaption { padding: 12px 14px; font-weight: 700; color: var(--ink-soft); text-align: center; }
+
+@media (max-width: 760px) { .gallery-grid { column-count: 2; } }
+@media (max-width: 480px) { .gallery-grid { column-count: 1; } }
 
 /* ---- About ---- */
 .about-wrap { display: flex; align-items: center; gap: 44px; flex-wrap: wrap; justify-content: center; }
