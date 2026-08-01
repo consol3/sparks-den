@@ -340,3 +340,66 @@ a { text-decoration: none; color: inherit; }
   }
   .about-wrap { flex-direction: column; text-align: center; }
 }
+
+/* ---- Nickname modal ---- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  background: var(--card);
+  border: 1px solid var(--accent-dark);
+  border-radius: 16px;
+  padding: 32px 36px;
+  max-width: 320px;
+  width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transform: scale(0.92) translateY(10px);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.modal-backdrop.open .modal-card {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.modal-platform {
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.modal-nickname {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  color: var(--accent-2);
+  margin: 0 0 24px;
+  letter-spacing: 0.03em;
+}
+
+.modal-close {
+  background: var(--accent);
+  color: #1a1414;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 26px;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.modal-close:hover { transform: translateY(-2px); }

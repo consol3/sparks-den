@@ -52,6 +52,36 @@ function spawnEmberSurge() {
   }
 }
 
+const nicknameModalBackdrop = document.getElementById('nicknameModalBackdrop');
+const nicknameModalPlatform = document.getElementById('nicknameModalPlatform');
+const nicknameModalNickname = document.getElementById('nicknameModalNickname');
+const nicknameModalClose = document.getElementById('nicknameModalClose');
+
+document.querySelectorAll('.nickname-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    nicknameModalPlatform.textContent = link.dataset.platform;
+    nicknameModalNickname.textContent = link.dataset.nickname;
+    openNicknameModal();
+  });
+});
+
+function openNicknameModal() {
+  nicknameModalBackdrop.classList.add('open');
+}
+
+function closeNicknameModal() {
+  nicknameModalBackdrop.classList.remove('open');
+}
+
+nicknameModalClose.addEventListener('click', closeNicknameModal);
+nicknameModalBackdrop.addEventListener('click', (e) => {
+  if (e.target === nicknameModalBackdrop) closeNicknameModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeNicknameModal();
+});
+
 document.addEventListener('click', (e) => spawnSparks(e.clientX, e.clientY));
 
 function spawnSparks(cx, cy) {
